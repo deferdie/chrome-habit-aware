@@ -1,14 +1,14 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Home from "../views/components/Home.vue";
+import Domains from "../views/components/Domains.vue";
 
 Vue.use(VueRouter);
 
 const routes = [
   {
-    path: "/",
-    name: "Home",
-    component: Home,
+    path: "/domains",
+    name: "Domains",
+    component: Domains,
   },
 ];
 
