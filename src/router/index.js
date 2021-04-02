@@ -1,14 +1,12 @@
 import Vue from "vue";
 import VueRouter from "vue-router";
-import Domains from "../views/components/Domains.vue";
-
-Vue.use(VueRouter);
+import DomainList from "../js/components/DomainList.vue";
 
 const routes = [
   {
-    path: "/domains",
-    name: "Domains",
-    component: Domains,
+    path: "/src/views/domains.html",
+    name: "DomainList",
+    component: DomainList,
   },
 ];
 

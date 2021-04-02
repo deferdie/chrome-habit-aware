@@ -16,7 +16,7 @@ domainsButton.addEventListener("click", async () => {
 });
 
 // Set the current tabs host within the add site button
-chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
   var activeTab = tabs[0];
   var host = new URL(activeTab.url).hostname;
   document.getElementById("siteHost").innerHTML = host;
@@ -27,14 +27,15 @@ addSiteButton.addEventListener("click", async () => {
   chrome.storage.sync.get(["domains"], (result) => {
     var domains = result.domains;
 
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
       var activeTab = tabs[0];
       var host = new URL(activeTab.url).hostname;
       if (!domains[host]) {
         domains[host] = {
           visits: [],
+          enabled: true,
           options: {
-            delay: 1000,
+            delay: 5,
           },
         };
 

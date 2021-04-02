@@ -1,6 +1,10 @@
 <template>
   <div id="app">
-    <div class="nav"><router-link to="/domains">Home</router-link>|</div>
+    <nav class="text-center d-flex">
+      <router-link class="btn" to="/src/views/domains.html">
+        Website list
+      </router-link>
+    </nav>
     <router-view />
   </div>
 </template>

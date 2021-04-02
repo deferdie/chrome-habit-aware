@@ -11,8 +11,9 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "axios": "^0.21.1",
     "core-js": "^3.6.5",
-    "vue": "^2.6.12",
+    "vue": "^2.6.11",
     "vue-router": "^3.4.3"
   },
   "browserslist": [
@@ -25,6 +26,7 @@
     "@babel/preset-env": "^7.11.5",
     "babel-loader": "^8.1.0",
     "copy-webpack-plugin": "^6.4.1",
+    "vue": "^2.6.11",
     "vue-loader": "^15.9.3",
     "vue-template-compiler": "^2.6.12",
     "webpack": "^4.44.1",

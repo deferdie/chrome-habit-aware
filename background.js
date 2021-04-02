@@ -6,7 +6,7 @@ chrome.runtime.onInstalled.addListener(() => {
 
 chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
   if (changeInfo.status == "complete") {
-    chrome.tabs.query({ active: true, currentWindow: true }, function (tabs) {
+    chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
       var activeTab = tabs[0];
       if (activeTab === undefined) return;
 
@@ -15,9 +15,22 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
 
         var url = new URL(activeTab.url);
         var activeTabHost = url.hostname;
+
         if (domainsToTrack[activeTabHost]) {
-          redirect("http://www.google.com");
           log(activeTabHost);
+
+          if (domainsToTrack[activeTabHost].enabled) {
+            chrome.storage.sync.set({
+              redirect: {
+                to: activeTab.url,
+                domain: activeTabHost,
+              },
+            });
+
+            redirect(
+              "chrome-extension://" + chrome.runtime.id + "/src/views/safe.html"
+            );
+          }
 
           return;
         }
@@ -53,13 +66,13 @@ function checkForAdultContent(tab) {
       target: { tabId: tab.id, allFrames: true },
       files: ["./src/js/getMessageContent.js"],
     },
-    function (res) {
+    function(res) {
       // console.log(res);
     }
   );
 }
 
-chrome.runtime.onMessage.addListener(function (request, sender) {
+chrome.runtime.onMessage.addListener(function(request, sender) {
   if (request.action == "getSource") {
     var res = request.source.match("porn|PORN");
     if (res != undefined && res.length > 0) {

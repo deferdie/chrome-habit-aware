@@ -1,6 +1,4 @@
 body {
-  width: 200px;
-  height: 200px;
   margin: 0 auto;
 }
 
@@ -23,6 +21,10 @@ h1 {
   cursor: pointer;
 }
 
+.btn-danger {
+  background-color: #b31313;
+}
+
 footer {
   position: absolute;
   width: 89%;
@@ -32,4 +34,76 @@ footer {
 
 .mb-2 {
   margin-bottom: 15px;
+}
+
+.mt-2 {
+  margin-top: 15px;
+}
+
+a {
+  text-decoration: none;
+}
+
+.text-center {
+  text-align: center;
+}
+
+.domain-setting {
+  -webkit-box-shadow: 5px 5px 15px -3px #7D7D7D;
+  box-shadow: 5px 5px 15px -3px #7D7D7D;
+  padding: 10px;
+  border: 1px solid #c5c5c5;
+  border-radius: 3px;
+}
+
+.domain-title {
+  font-size: 1.3em;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.d-flex {
+  display: flex;
+}
+
+.justify-space-between {
+  justify-content: space-between;
+}
+
+.flex-grow-1 {
+  flex-grow: 1;
+}
+
+#app {
+  margin: 0 auto;
+  max-width: 600px;
+}
+
+.header {
+  position: relative;
+  height: 100vh;
+  padding: 20px;
+  background-color: #111;
+  color: #fff;
+  background-repeat: no-repeat;
+  background-position: center center;
+  background-size: cover;
+  font-size: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+  -ms-flex-pack: justify;
+  align-items: center;
+  -webkit-box-orient: vertical;
+  -webkit-box-direction: normal;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  justify-content: center;
+}
+
+#safe h1 {
+  font-size: 4em;
 }
