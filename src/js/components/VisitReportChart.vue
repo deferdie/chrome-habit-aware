@@ -10,7 +10,13 @@ export default {
     return {
       chartdata: {
         labels: [],
-        datasets: [],
+        datasets: [
+          {
+            label: "Visits",
+            backgroundColor: "#f87979",
+            data: [],
+          },
+        ],
       },
       options: {
         responsive: true,
@@ -20,13 +26,23 @@ export default {
             position: "top",
           },
         },
+
+        scales: {
+          yAxes: [
+            {
+              ticks: {
+                stepSize: 1,
+                beginAtZero: true,
+              },
+            },
+          ],
+        },
       },
     };
   },
 
   mounted() {
     const domainProps = this.domainProps;
-    console.log(domainProps);
     const formattedVisits = {};
 
     domainProps.visits.map((visit) => {
@@ -39,11 +55,9 @@ export default {
     });
 
     Object.keys(formattedVisits).map((formattedVisit) => {
-      this.chartdata.datasets.push({
-        label: formattedVisit,
-        backgroundColor: "#f87979",
-        data: [formattedVisits[formattedVisit].length],
-      });
+      this.chartdata.datasets[0].data.push(
+        formattedVisits[formattedVisit].length
+      );
     });
 
     this.chartdata.labels = Object.keys(formattedVisits);
