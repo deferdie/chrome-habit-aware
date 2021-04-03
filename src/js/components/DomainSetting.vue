@@ -33,12 +33,19 @@
           @keyup="updateDelay"
         />
       </div>
+
+      <visit-report-chart></visit-report-chart>
     </div>
   </div>
 </template>
 
 <script>
+import VisitReportChart from "./VisitReportChart.vue";
 export default {
+  components: {
+    VisitReportChart,
+  },
+
   props: ["domain", "options"],
 
   data() {
