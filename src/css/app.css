@@ -11,6 +11,10 @@ h1 {
   text-align: center;
 }
 
+a {
+  text-decoration: none;
+}
+
 .btn {
   border: none;
   background-color: #00afa9;
@@ -25,11 +29,8 @@ h1 {
   background-color: #b31313;
 }
 
-footer {
-  position: absolute;
-  width: 89%;
-  bottom: 0;
-  padding: 10px;
+.popup {
+  min-width: 200px;
 }
 
 .mb-2 {
@@ -40,8 +41,17 @@ footer {
   margin-top: 15px;
 }
 
-a {
-  text-decoration: none;
+.w-100 {
+  width: 100%;
+}
+
+.form-group {
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.form-group label {
+  font-weight: bold;
 }
 
 .text-center {

@@ -16,8 +16,10 @@
         <p>Total visits: {{ options.visits.length }}</p>
       </div>
 
-      <div>
-        {{ options.enabled ? "Active" : "Disabled" }}
+      <div class="form-group">
+        <label>
+          {{ options.enabled ? "Active" : "Disabled" }}
+        </label>
         <input
           type="checkbox"
           v-model="options.enabled"
@@ -25,13 +27,23 @@
         />
       </div>
 
-      <div>
+      <div class="form-group">
         <label>Minutes to wait</label>
         <input
+          class="w-100"
           type="number"
           v-model="options.options.delay"
           @keyup="updateDelay"
         />
+      </div>
+
+      <div class="form-group">
+        <label>Message to yourself</label>
+        <textarea
+          class="w-100"
+          v-model="options.options.message"
+          @keyup="updateMessage"
+        ></textarea>
       </div>
 
       <visit-report-chart
@@ -74,11 +86,19 @@ export default {
       });
     },
 
-    updateDelay(e) {
+    updateDelay() {
       chrome.storage.sync.get(["domains"], (result) => {
         var domains = { ...result.domains };
         domains[this.domain].options.delay = this.options.options.delay;
         this.updateDomains(domains);
+      });
+    },
+
+    updateMessage() {
+      chrome.storage.sync.get(["domains"], (result) => {
+        var domains = { ...result.domains };
+        domains[this.domain].options.message = this.options.options.message;
+        this.updateDomains(result.domains);
       });
     },
 

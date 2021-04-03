@@ -36,6 +36,7 @@ addSiteButton.addEventListener("click", async () => {
           enabled: true,
           options: {
             delay: 5,
+            message: "",
           },
         };
 
