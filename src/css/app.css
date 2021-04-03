@@ -70,6 +70,10 @@ a {
   font-size: 1.3em;
 }
 
+.domain-title {
+  font-weight: bold;
+}
+
 .cursor-pointer {
   cursor: pointer;
 }

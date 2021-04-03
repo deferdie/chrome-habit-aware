@@ -25,6 +25,10 @@
           v-model="options.enabled"
           @click="toggleActive()"
         />
+        <p v-if="changingActiveStatus">
+          This status is changing, you have 20 seconds to close this page to
+          cancel the change.
+        </p>
       </div>
 
       <div class="form-group">
@@ -66,6 +70,7 @@ export default {
   data() {
     return {
       show: true,
+      changingActiveStatus: false,
     };
   },
 
@@ -79,11 +84,20 @@ export default {
     },
 
     toggleActive() {
-      chrome.storage.sync.get(["domains"], (result) => {
-        var domains = { ...result.domains };
-        domains[this.domain].enabled = this.options.enabled;
-        this.updateDomains(domains);
-      });
+      let timeOut = 0;
+      if (!this.options.enabled === false) {
+        this.changingActiveStatus = true;
+        timeOut = 1000 * 20;
+      }
+
+      setTimeout(() => {
+        chrome.storage.sync.get(["domains"], (result) => {
+          var domains = { ...result.domains };
+          domains[this.domain].enabled = this.options.enabled;
+          this.updateDomains(domains);
+          this.changingActiveStatus = false;
+        });
+      }, timeOut);
     },
 
     updateDelay() {
