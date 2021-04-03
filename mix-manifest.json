@@ -1,5 +1,5 @@
 {
-    "/dist/src/js/main.js": "/dist/src/js/main.js",
+    "/dist/src/js/dist/main.js": "/dist/src/js/dist/main.js",
     "/dist/manifest.json": "/dist/manifest.json",
     "/dist/background.js": "/dist/background.js"
 }

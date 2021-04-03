@@ -34,7 +34,10 @@
         />
       </div>
 
-      <visit-report-chart></visit-report-chart>
+      <visit-report-chart
+        :domain="domain"
+        :domain-props="options"
+      ></visit-report-chart>
     </div>
   </div>
 </template>
