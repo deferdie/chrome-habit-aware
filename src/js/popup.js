@@ -29,7 +29,13 @@ addSiteButton.addEventListener("click", async () => {
 
     chrome.tabs.query({ active: true, currentWindow: true }, function(tabs) {
       var activeTab = tabs[0];
-      var host = new URL(activeTab.url).hostname;
+      var url = new URL(activeTab.url);
+      var host = url.hostname;
+
+      if (url.protocol === "chrome-extension:" || url.protocol === "chrome:") {
+        return;
+      }
+
       if (!domains[host]) {
         domains[host] = {
           visits: [],
@@ -43,8 +49,6 @@ addSiteButton.addEventListener("click", async () => {
         chrome.storage.sync.set({
           domains: result.domains,
         });
-
-        console.log(domains);
       }
     });
   });
