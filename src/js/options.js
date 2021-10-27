@@ -10,10 +10,6 @@ clearAllSiteCountButton.addEventListener("click", async () => {
     chrome.storage.sync.set({
       domains: domains,
     });
-
-    chrome.storage.sync.get(["domains"], (result) => {
-      console.log(result);
-    });
   });
 });
 

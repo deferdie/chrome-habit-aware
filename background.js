@@ -35,7 +35,7 @@ chrome.tabs.onUpdated.addListener((tabId, changeInfo) => {
           return;
         }
 
-        checkForAdultContent(activeTab);
+        // checkForAdultContent(activeTab);
       });
     });
   }
@@ -60,23 +60,23 @@ function log(url) {
   });
 }
 
-function checkForAdultContent(tab) {
-  chrome.scripting.executeScript(
-    {
-      target: { tabId: tab.id, allFrames: true },
-      files: ["./src/js/getMessageContent.js"],
-    },
-    function(res) {
-      // console.log(res);
-    }
-  );
-}
+// function checkForAdultContent(tab) {
+//   chrome.scripting.executeScript(
+//     {
+//       target: { tabId: tab.id, allFrames: true },
+//       files: ["./src/js/getMessageContent.js"],
+//     },
+//     function(res) {
+//       // console.log(res);
+//     }
+//   );
+// }
 
-chrome.runtime.onMessage.addListener(function(request, sender) {
-  if (request.action == "getSource") {
-    var res = request.source.match("porn|PORN");
-    if (res != undefined && res.length > 0) {
-      console.log("possible adult site, suggest warning");
-    }
-  }
-});
+// chrome.runtime.onMessage.addListener(function(request, sender) {
+//   if (request.action == "getSource") {
+//     var res = request.source.match("porn|PORN");
+//     if (res != undefined && res.length > 0) {
+//       console.log("possible adult site, suggest warning");
+//     }
+//   }
+// });
